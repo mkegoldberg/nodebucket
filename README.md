@@ -1,2 +1,2 @@
 # nodebucket
-This is a end to end application utilizing the MEAN stack
+This is an end to end application utilizing the MEAN stack
