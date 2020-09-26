@@ -24,17 +24,17 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
-        canActivate: [AuthGuard]
       },
+    ],
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'session',
+    component: AuthLayoutComponent,
+    children: [
       {
-        path: 'session',
-        component: AuthLayoutComponent,
-        children: [
-          {
-            path: 'signin',
-            component: SigninComponent
-          }
-        ]
+        path: 'signin',
+        component: SigninComponent
       }
     ]
   }
