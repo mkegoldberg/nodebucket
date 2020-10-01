@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 /*
 ============================================
 ; Title: Nodebucket
@@ -9,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 ;===========================================
 */
 
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -34,15 +34,18 @@ export class SigninComponent implements OnInit {
 
   login() {
     const empId = this.form.controls['empId'].value;
-
+    console.log(empId);
     this.http.get('/api/employees/' + empId).subscribe(res => {
       if (res) {
         this.cookieService.set('session_user', empId, 1);
         this.router.navigate(['/']);
+        setTimeout(() => {
+          this.form.reset();
+        }, 500);
       } else {
         this.error = "The employee Id is invalid, please try again";
+        this.form.reset();
       }
     })
   }
-
 }

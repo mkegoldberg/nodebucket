@@ -18,6 +18,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 const Employee = require('./models/employee');
+const EmployeeApi = require('./routes/employee-api');
 
 /**
  * App configurations
@@ -54,30 +55,7 @@ mongoose.connect(conn, {
 /**
  * API(s) go here...
  */
-//  Find employee by ID
-app.get('/api/employees/:empId', async(req, res) => {
-  try {
-    // Use mongoose employee model to query the database of employees
-    Employee.findOne({ 'empId': req.params.empId }, function (err, employee) {
-      if (err) {
-        console.log(err);
-        res.status(500).send({
-          'message': 'internal server error!'
-        })
-      } else {
-        // if no database errors, return employee data
-        console.log(employee);
-        res.json(employee);
-      }
-    })
-  } catch (e) {
-    // catch any errors not prepared for
-    console.log(e);
-    res.status(500).send({
-      'message': 'internal server error!'
-    })
-  }
-})
+app.use('/api/employees', EmployeeApi); //localhost:3000/api/employees
 
 
 /**
@@ -94,4 +72,4 @@ http.createServer(app).listen(port, function() {
 //connection: mongodb+srv://<username>:<password>@buwebdev-cluster-1.f4r04.mongodb.net/<dbname>?retryWrites=true&w=majority
 
 // npm run local host to check errors and run
-// or do 2 terminal => angular on 4200 servere on 3000
+// or do 2 terminals => angular on 4200 (ng serve) & server on 3000 (npm run serve)
