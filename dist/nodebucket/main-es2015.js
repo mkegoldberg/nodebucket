@@ -256,15 +256,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/form-field */ "kmnG");
 /* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/input */ "qFsG");
 /* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/button */ "bTqV");
-/*
-============================================
-; Title: Nodebucket
-; Author: Mike Goldberg
-; Date: 09/16/2020
-; Modified By: Mike Goldberg
-; Description: MEAN Stack Application
-;===========================================
-*/
 
 
 
@@ -315,13 +306,16 @@ class SigninComponent {
         const empId = this.form.controls['empId'].value;
         console.log(empId);
         this.http.get('/api/employees/' + empId).subscribe(res => {
-            debugger;
             if (res) {
                 this.cookieService.set('session_user', empId, 1);
                 this.router.navigate(['/']);
+                setTimeout(() => {
+                    this.form.reset();
+                }, 500);
             }
             else {
                 this.error = "The employee Id is invalid, please try again";
+                this.form.reset();
             }
         });
     }
@@ -340,7 +334,7 @@ SigninComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, SigninComponent_div_7_Template, 3, 1, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "mat-card", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "form", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngSubmit", function SigninComponent_Template_form_ngSubmit_9_listener() { ctx.login(); return ctx.form.reset(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngSubmit", function SigninComponent_Template_form_ngSubmit_9_listener() { return ctx.login(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "mat-card-content");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "mat-form-field", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "mat-label", 6);

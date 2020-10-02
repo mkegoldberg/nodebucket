@@ -524,16 +524,6 @@
       var _angular_material_button__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
       /*! @angular/material/button */
       "bTqV");
-      /*
-      ============================================
-      ; Title: Nodebucket
-      ; Author: Mike Goldberg
-      ; Date: 09/16/2020
-      ; Modified By: Mike Goldberg
-      ; Description: MEAN Stack Application
-      ;===========================================
-      */
-
 
       function SigninComponent_div_7_Template(rf, ctx) {
         if (rf & 1) {
@@ -602,14 +592,18 @@
             var empId = this.form.controls['empId'].value;
             console.log(empId);
             this.http.get('/api/employees/' + empId).subscribe(function (res) {
-              debugger;
-
               if (res) {
                 _this.cookieService.set('session_user', empId, 1);
 
                 _this.router.navigate(['/']);
+
+                setTimeout(function () {
+                  _this.form.reset();
+                }, 500);
               } else {
                 _this.error = "The employee Id is invalid, please try again";
+
+                _this.form.reset();
               }
             });
           }
@@ -655,8 +649,7 @@
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "form", 4);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngSubmit", function SigninComponent_Template_form_ngSubmit_9_listener() {
-              ctx.login();
-              return ctx.form.reset();
+              return ctx.login();
             });
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "mat-card-content");

@@ -38,7 +38,7 @@ router.get('/:empId/tasks', async(req, res) => {
         const mongodbError = new ErrorResponse( '500', 'Internal server error', err);
         res.status(500).send(mongodbError.toObject());
       } else {
-        console.log(employee);
+        console.log("findAllTasks called", employee);
         const successResponse = new BaseResponse("200", 'Successful query!', employee);
         res.json(successResponse.toObject());
       }
@@ -59,7 +59,7 @@ router.post('/:empId/tasks', async(req, res) => {
         const mongoCreateError = new ErrorResponse( '500', 'Internal server error', err);
         res.status(500).send(mongoCreateError.toObject());
       } else {
-        console.log(employee);
+        console.log("createTask called", employee);
         // create new item
         const item = {
           text: req.body.text
@@ -97,7 +97,7 @@ router.put('/:empId/tasks', async(req, res) => {
         const mongoUpdateError = new ErrorResponse( '500', 'Internal server error', err);
         res.status(500).send(mongoUpdateError.toObject());
       } else {
-        console.log(employee);
+        console.log("updateTask called", employee);
 
         employee.set({
           todo: req.body.todo,
@@ -125,7 +125,6 @@ router.put('/:empId/tasks', async(req, res) => {
   }
 });
 
-
 // Delete Task
 router.delete('/:empId/tasks/:taskId', async(req, res) => {
   try {
@@ -135,10 +134,10 @@ router.delete('/:empId/tasks/:taskId', async(req, res) => {
         const mongoDeleteError = new ErrorResponse( '500', 'Internal server error', err);
         res.status(500).send(mongoDeleteError.toObject());
       } else {
-        console.log(employee);
+        console.log("deleteTask called", employee);
 
-        const todoItem = employee.todo.find(iem => item._id.toString() === req.params.taskId);
-        const doneItem = employee.done.find(iem => item._id.toString() === req.params.taskId);
+        const todoItem = employee.todo.find(item => item._id.toString() === req.params.taskId);
+        const doneItem = employee.done.find(item => item._id.toString() === req.params.taskId);
 
         if (todoItem) {
           employee.todo.id(todoItem._id).remove();
