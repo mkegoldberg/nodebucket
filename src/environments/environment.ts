@@ -1,3 +1,13 @@
+/*
+============================================
+; Title: Nodebucket
+; Author: Mike Goldberg
+; Date: 09/16/2020
+; Modified By: Mike Goldberg
+; Description: MEAN Stack Application
+;===========================================
+*/
+
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.

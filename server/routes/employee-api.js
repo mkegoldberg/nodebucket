@@ -1,3 +1,13 @@
+/*
+============================================
+; Title: Nodebucket
+; Author: Mike Goldberg
+; Date: 10/01/2020
+; Modified By: Mike Goldberg
+; Description: MEAN Stack Application
+;===========================================
+*/
+
 const express = require('express');
 const Employee = require('../models/employee');
 const router = express.Router();
