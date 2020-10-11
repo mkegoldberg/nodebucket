@@ -32,7 +32,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { MatDividerModule } from '@angular/material/divider/'
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatMenuModule } from '@angular/material/menu'
+import { MatMenuModule } from '@angular/material/menu';
+import { AboutComponent } from './pages/about/about.component'
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MatMenuModule } from '@angular/material/menu'
     AuthLayoutComponent,
     SigninComponent,
     NotFoundComponent,
-    CreateTaskDialogComponent
+    CreateTaskDialogComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,3 @@
-
 /*
 ============================================
 ; Title: Nodebucket
@@ -10,7 +9,7 @@
 */
 
 import { Component, OnInit } from '@angular/core';
-
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-not-found',
   templateUrl: './not-found.component.html',
@@ -18,9 +17,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotFoundComponent implements OnInit {
 
-  constructor() { }
+  empId: string;
+  route: string;
+
+  constructor(private cookieService: CookieService) {
+    this.empId = this.cookieService.get('session_user');
+  }
 
   ngOnInit(): void {
+    if (this.empId) {
+      this.route = "Home"
+    } else {
+      this.route = "Sign In"
+    }
   }
 
 }

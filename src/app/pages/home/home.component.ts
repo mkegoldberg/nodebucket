@@ -106,24 +106,6 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  addNewTask() {
-    debugger;
-    if (this.taskForm.value) {
-      this.taskService.createTask(this.empId, this.taskForm.value).subscribe(res => {
-        this.employee = res.data;
-      }, err => {
-        console.log(err);
-      }, () => {
-        this.todo = this.employee.todo;
-        this.done = this.employee.done;
-      })
-    } else {
-      const dialogRef = this.dialog.open(CreateTaskDialogComponent, {
-        disableClose: true
-      })
-    }
-  }
-
   deleteTask(taskId: string) {
     if (taskId) {
       console.log(`Task item ${taskId} was deleted`);
