@@ -1,26 +1,19 @@
 <div fxLayout="column">
 
     <!-- navigation -->
-    <nav fxFlex>
-      <mat-toolbar color="primary">
-        <!-- navbar container -->
-        <div class="navbar-container">
-          <!-- logo -->
-          <button class="logo" routerLink="/" mat-button>nodebucket</button>
-
-          <button class="navbar-link" routerLink="/" mat-button>Home</button>
-          <button class="navbar-link" mat-button>About</button>
-          <button
-            class="navbar-link"
-            mat-button
-            (click)="signOut()"
-          >
-            Sign Out
-          </button>
+    <mat-toolbar class="toolbar bg-blue text-white">
+      <mat-toolbar-row class="navbar-container">
+        <div class="logo">
+          <img src="../../../assets/logo-01.svg" alt="Nodebucket - Task Management System" routerLink="/"/>
         </div>
-
-      </mat-toolbar>
-    </nav>
+        <div style="width: 80%">
+          <div fxLayout="row wrap" fxLayoutAlign="end start">
+            <button class="navbar-link" mat-button routerLink="/about">About Us</button>
+            <button class="navbar-link" mat-button routerLink="/book-list" (click)="signOut()">Sign Out</button>
+          </div>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
 
     <!-- main content -->
     <div fxFlex>
@@ -30,11 +23,11 @@
     </div>
 
     <!-- footer -->
-    <div fxFlex>
+    <div fxFlex fxLayoutAlign="center center">
       <footer class="footer">
         <mat-toolbar class="footer-content">
-          <p>
-            &copy; {{year | date: 'yyyy'}} - nodebucket - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
+          <p class="text-center" style="width: 100%;">
+            &copy;{{year | date: 'yyyy'}} - nodebucket Task Solutions
           </p>
         </mat-toolbar>
       </footer>

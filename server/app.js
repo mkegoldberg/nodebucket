@@ -19,6 +19,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const Employee = require('./models/employee');
 const EmployeeApi = require('./routes/employee-api');
+const cors = require('cors')
 
 /**
  * App configurations
@@ -27,6 +28,7 @@ let app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended': true}));
 app.use(morgan('dev'));
+app.use(cors());
 app.use(express.static(path.join(__dirname, '../dist/nodebucket')));
 app.use('/', express.static(path.join(__dirname, '../dist/nodebucket')));
 
