@@ -19,7 +19,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const Employee = require('./models/employee');
 const EmployeeApi = require('./routes/employee-api');
-const cors = require('cors')
+const cors = require('cors');
 
 /**
  * App configurations
@@ -35,7 +35,7 @@ app.use('/', express.static(path.join(__dirname, '../dist/nodebucket')));
 /**
  * Variables
  */
-const port = 3000; // server port
+const port = process.env.PORT || 3000;  // server port
 
 // database connection string
 const conn = 'mongodb+srv://user-01:dbUser01@buwebdev-cluster-1.f4r04.mongodb.net/nodebucket?retryWrites=true&w=majority';
@@ -66,12 +66,3 @@ app.use('/api/employees', EmployeeApi); //localhost:3000/api/employees
 http.createServer(app).listen(port, function() {
   console.log(`Application started and listening on port: ${port}`)
 }); // end http create server function
-
-
-
-//login:
-//pass:
-//connection: mongodb+srv://<username>:<password>@buwebdev-cluster-1.f4r04.mongodb.net/<dbname>?retryWrites=true&w=majority
-
-// npm run local host to check errors and run
-// or do 2 terminals => angular on 4200 (ng serve) & server on 3000 (npm run serve)
